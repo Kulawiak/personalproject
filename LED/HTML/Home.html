@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Touch icons for android and iOS (Bookmark icons) -->
+    <link rel="shortcut icon" sizes="196x196" href="https://dominikfx.com/images/icons/icon-196x196.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://dominikfx.com/images/icons/touch-icon-iphone.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://dominikfx.com/images/icons/touch-icon-ipad.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://dominikfx.com/images/icons/touch-icon-iphone-retina.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://dominikfx.com/images/icons/touch-icon-ipad-retina.png">
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <title>LED Controller Demo</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Poppins:400,700');
+
+        div {
+            padding-bottom: 1em;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 1em;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+        }
+
+        footer {
+            text-align: center;
+        }
+
+        form {
+            border: 1px solid #c1c2c3;
+            background-color: #e1e2e3;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 20px;
+        }
+
+        select {
+            background-color: #F1F3F4;
+            border: none;
+            margin: 3px;
+            box-shadow: none !important;
+            outline: none !important;
+            border-radius: 1rem;
+            padding: 5px 20px 5px 20px;
+        }
+
+        input {
+            background-color: #F1F3F4;
+            border: none;
+            border-radius: 1rem;
+            padding: 5px 20px 5px 20px;
+            margin: 3px;
+            width: 8rem;
+            box-shadow: none !important;
+            outline: none !important;
+        }
+
+            input:focus, input:hover {
+                background-color: #e8eaed;
+            }
+
+        .lbl {
+            padding-right: 5px;
+        }
+
+        button {
+            text-transform: uppercase;
+            font-size: 16px;
+            border-radius: 1rem;
+            background-color: #d83b1a;
+            border: none;
+            color: #fff;
+            font-weight: 700;
+            padding: 5px 20px 5px 20px;
+            outline: none !important;
+            margin: 3px 1px 3px 1px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Home</h1>
+    <div>
+        <h4>General</h4>
+        <form action="/set" method="post">
+            <button name="effect" value="on">On</button>
+            <button name="effect" value="off">Off</button>
+        </form>
+    </div>
+    <div>
+        <h4>Static</h4>
+        <form action="/set" method="post">
+            <button name="effect" value="red">Red</button>
+            <button name="effect" value="green">Green</button>
+            <button name="effect" value="blue">Blue</button>
+        </form>
+    </div>
+    <div>
+        <h4>Custom</h4>
+        <form action="/custom" method="post">
+            <a>Custom Color: </a><input type="color" name="color" value="#ff0000" /> <br />
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div>
+        <h4>Dynamic</h4>
+        <form action="/set" method="post">
+            <button name="effect" value="fade">Fade Out</button>
+            <button name="effect" value="chase">Chase</button>
+            <button name="effect" value="july">Fourth of July</button>
+            <button name="effect" value="police">Police</button>
+            <button name="effect" value="rainbow">Rainbow</button>
+            <button name="effect" value="street">Street Lights</button>
+            <button name="effect" value="xmas">Xmas</button>
+        </form>
+    </div>
+    <div>
+        <h4>Visualization</h4>
+        <form action="/set" method="post">
+            <button name="effect" value="audio">Audio Reaction</button>
+            <select name="type">
+                <option value="0">Middle Mirror</option>
+                <option value="1">Left Full</option>
+                <option value="2">Right Full</option>
+            </select>
+        </form>
+    </div>
+    <div>
+        <h4>General Settings</h4>
+        <form action="/settings" method="post">
+            <button name="scan" value="true">Search for Devices</button>
+        </form>
+        ---
+        <form action="/settings" method="post">
+            <a class="lbl">Manual IP: </a><input type="text" name="ip_address" placeholder="x.x.x.x" value="%ip%" /> <br />
+            <button type="submit">Submit</button>
+        </form>
+        <form action="/settings" method="post">
+            <a class="lbl">Desired FPS: </a><input type="number" name="fps" placeholder="enter the desired fps" value="%fps%" /> <br />
+            <a class="lbl">LED Count: </a><input type="number" name="led" placeholder="enter the led count" value="%led%" /> <br />
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div>
+        <h4>Console Controls</h4>
+        <form action="/console" method="post">
+            <button name="state" value="show">Show Console</button>
+            <button name="state" value="hide">Hide Console</button>
+            <button name="state" value="quit">Quit LightFX</button>
+        </form>
+    </div>
+    <div>
+        <hr />
+        <footer>%BUILD_INFO%</footer>
+    </div>
+</body>
+</html>
